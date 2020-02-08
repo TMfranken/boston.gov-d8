@@ -818,7 +818,27 @@ What: Locates content nicely on the page.
 .page-user .main {
   padding: 2em 0;
 }
-
+.page-user-login .main {
+  margin: 4em 0;
+}
+#edit-simplesamlphp-auth-login-link {
+  display: inline-block;
+  text-decoration: none;
+  background-color: #1b8000;
+  font-family: Montserrat,sans-serif;
+  letter-spacing: 1px;
+  border: 0;
+  text-transform: uppercase;
+  padding: 1.7em 1.5em;
+  font-size: .77778rem;
+  line-height: 1rem;
+  font-weight: 700;
+  box-sizing: border-box;
+  max-width: 100%;
+  color: #fff;
+  float: right;
+  margin-right: 10px;
+}
 /*
 David:
 Where: lgogo.twig.twig
