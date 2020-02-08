@@ -72,7 +72,9 @@ div#edit-meta-published.status-needs-review {
   background-color: #0075d1;
   color: #fff;
 }
-.bos_admin header.content-header,
+.bos_admin header.content-header {
+  background-color: #333;
+}
 .bos_admin.node-draft .content-header,
 div[id^=edit-moderation-state-].status-draft-available,
 div#edit-meta-published.status-draft-available {

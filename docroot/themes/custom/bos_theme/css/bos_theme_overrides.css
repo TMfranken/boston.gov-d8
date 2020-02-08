@@ -946,13 +946,13 @@ David:
 Where: page.html.twig
 What: Styles the watermark for D8.
  */
-.logged-in.toolbar-fixed .nv-m,
-.logged-in.toolbar-fixed #main-menu {
+.node-moderated.toolbar-fixed .nv-m,
+.node-moderated.toolbar-fixed #main-menu {
   top: 6.5em;
 }
-.logged-in #page,
-.logged-in.toolbar-fixed.toolbar-tray-open .nv-m,
-.logged-in.toolbar-fixed.toolbar-tray-open #main-menu {
+.node-moderated #page,
+.node-moderated.toolbar-fixed.toolbar-tray-open .nv-m,
+.node-moderated.toolbar-fixed.toolbar-tray-open #main-menu {
   top: 8.8em;
 }
 .logged-in.page-error #page,
