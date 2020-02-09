@@ -447,9 +447,26 @@ function bos_theme_preprocess_page(array &$variables, $hook) {
   // Check if the ?local param is present.
   if ($query->has('local')) {
     // Set SSO to false for local logins.
-    $variables['sso_login_url'] = FALSE;
+    if (isset($GLOBALS["config"]["simplesamlphp_auth.settings"]['sso_login_local_whitelist'])) {
+      $whitelist = $GLOBALS["config"]["simplesamlphp_auth.settings"]['sso_login_local_whitelist'];
+      foreach($whitelist as $wip) {
+        foreach($request->getClientIps() as $clientip) {
+          if (_ip_match($wip, $clientip)) {
+            $variables['sso_login_url'] = FALSE;
+            break;
+          }
+        }
+        if (isset($variables['sso_login_url'])) {
+          break;
+        }
+      }
+      if (!isset($variables['sso_login_url'])) {
+        $ipaddresses = implode(",", $request->getClientIps());
+        Drupal::messenger()->addError("The IPAddress $ipaddresses is not whitelisted. Local login is not possible.");
+      }
+    }
   }
-  else {
+  if (!isset($variables['sso_login_url'])) {
     // Get SSO Login URL.
     $ssoLoginUrl = Settings::get('sso_login_url', '');
     // Get settings for saml.settings.php.
@@ -464,6 +481,8 @@ function bos_theme_preprocess_page__user__login(array &$variables) {
   // DU: Added this line to stop the login page from being cached.
   // /user/login is to be redirected by simplesaml but /user/login?local should
   // not.  If the page is cached, then the redirects wont work as expected.
+  // NOTE: user/login?local path is trapped in bos_theme_preprocess_page()
+  // a few lines above ^^ (search for "$query->has('local')").
   \Drupal::service('page_cache_kill_switch')->trigger();
 
   _bos_theme_fix_attributes($variables);
@@ -1292,4 +1311,22 @@ function _bos_theme_build_breadcrumb(array &$variables) {
       $route .= $crumb . "/";
     }
   }
+}
+
+/**
+ * See if IP matches a given pattern.
+ *
+ * @param string $ip
+ *   IP to test.
+ * @param string $ip_pattern
+ *   Pattern to test against.
+ *
+ * @return bool
+ *   True if ip matches pattern, false otherwise.
+ */
+function _ip_match(string $ip, string $ip_pattern) {
+  if ($ip == $ip_pattern) {
+    return TRUE;
+  }
+  return FALSE;
 }
