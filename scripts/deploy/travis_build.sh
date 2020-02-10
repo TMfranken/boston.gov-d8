@@ -113,6 +113,7 @@
         # Clone the private repo and merge files in it with the main repo.
         # The private repo settings are defined in <git.private_repo.xxxx> in .config.yml.
         # 'clone_private_repo' function is contained in cob_build_utilities.sh.
+        git_private_repo_branch=git_private_repo_deploy_branch
         clone_private_repo
 
         # Create/update settings, private settings and local settings files.

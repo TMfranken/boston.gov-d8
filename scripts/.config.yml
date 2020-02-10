@@ -162,7 +162,7 @@ git:
   private_repo:
     repo: CityOfBoston/boston.gov-d8-private.git
     branch: develop
-    deploy_branch: develop
+    deploy_branch: "SAML-DU"
     # Where the repo will be cloned to.
     local_dir: ${REPO_ROOT}/setup/private
     # Provide the path to a settings script (relative to the private repo root),
