@@ -36,6 +36,9 @@ build:
       port: 3306
 
   travis:
+    # Each element of this deploy node is a branch in the main CoB repo.
+    # WARNING, scripts cannot track branches with spaces or dashes ("-") in their name.  AVOID and use _ instead.
+    #          If your branchname must have a space or "-", then in this file just remove them (i.e. my-branch = mybranch)
     develop:
       # With Travis, the type will control what type of build is deployed to Acquia (dev/prod/none).
       # none = don't alter modules enabled from configuration
@@ -50,7 +53,7 @@ build:
         # Set to 'true' or 'false'.  False means no configs will be imported during build/deploy
         # Note: if the commit is a hotfix, then configs wont be imported for expediency.
         sync: "true"
-    SAML_DU:
+    SAMLDU:
       # With Travis, the type will control what type of build is deployed to Acquia (dev/prod/none).
       # none = don't alter modules enabled from configuration
       type: dev
@@ -105,7 +108,7 @@ deploy:
     # user:host for (Acquia) git remote to be used for deployment.
     acquia_repo: bostond8@svn-29892.prod.hosting.acquia.com:bostond8.git
 
-  SAML_DU:
+  SAMLDU:
     # Folder in Travis container where deploy files will be "built"
     dir: ${REPO_ROOT}/deploy
     # Name of the target branch in the Acquia repo.
