@@ -8,6 +8,8 @@ hooks/templates
 setup
 tests
 drush/.gitignore
+docroot/sites/default/settings/.gitignore
+docroot/sites/default/.gitignore
 LICENSE.md
 migrate.config.log
 migrate.content.log
