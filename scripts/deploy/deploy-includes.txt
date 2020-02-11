@@ -3,7 +3,6 @@ docroot
 drush
 hooks
 vendor
-simplesamlphp
 scripts/deploy/acquia.enc
 composer.json
 composer.lock
