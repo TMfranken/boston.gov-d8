@@ -1,0 +1,9 @@
+name: "SAML Controller"
+type: module
+description: "Customizes the SAML workflows."
+package: "City of Boston"
+configure: bos_saml.admin_settings
+version: 8.x.1.0
+core: 8.x
+dependencies:
+  - simplesamlphp_auth

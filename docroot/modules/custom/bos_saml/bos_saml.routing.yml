@@ -1,0 +1,10 @@
+bos_saml.admin_settings:
+  path: '/admin/config/people/simplesamlphp_auth/boston'
+  defaults:
+    _title: 'Boston SAML Auth Settings'
+    _form: '\Drupal\bos_saml\Form\BostonSettingsForm'
+  requirements:
+    _permission: 'administer simpleSAMLphp authentication'
+  options:
+    _maintenance_access: TRUE
+    no_cache: TRUE
