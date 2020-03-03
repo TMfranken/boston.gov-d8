@@ -1,6 +1,6 @@
 services:
-  simplesamlphp_auth_event_subscriber:
-    class: Drupal\bos_saml\EventSubscriber\SimplesamlSubscriber
-    arguments: ['@simplesamlphp_auth.manager', '@current_user', '@config.factory', '@logger.channel.simplesamlphp_auth', '@current_route_match']
+  simplesamlphp_auth_externalauth_event_subscriber:
+    class: Drupal\bos_saml\EventSubscriber\SimplesamlExternalauthSubscriber
+    arguments: ['@simplesamlphp_auth.manager', '@simplesamlphp_auth.drupalauth', '@config.factory', '@logger.channel.simplesamlphp_auth', '@module_handler']
     tags:
       - {name: event_subscriber}

@@ -8,3 +8,12 @@ bos_saml.admin_settings:
   options:
     _maintenance_access: TRUE
     no_cache: TRUE
+bos_saml.saml_login:
+  path: '/bos_saml_login'
+  defaults:
+    _controller: '\Drupal\bos_saml\Controller\BosSamlController::authenticate'
+  requirements:
+    _user_is_logged_in: 'FALSE'
+  options:
+    _maintenance_access: TRUE
+    no_cache: TRUE
