@@ -45,6 +45,12 @@
 
     printf "ref: $(basename "$0")\n"
 
+    # Manage SSH keys for deployment to Acquia.
+    openssl aes-256-cbc -K $ACQUIA_KEY -iv $ACQUIA_VECTOR -in $TRAVIS_BUILD_DIR/scripts/deploy/acquia.enc -out $TRAVIS_BUILD_DIR/scripts/deploy/acquia_deploy -d
+    chmod 600 $TRAVIS_BUILD_DIR/scripts/deploy/acquia_deploy
+    eval "$(ssh-agent -s)"
+    ssh-add $TRAVIS_BUILD_DIR/scripts/deploy/acquia_deploy
+
     # Note that the canonical repository is watched. Commits to forked repositories
     # will not trigger deployment unless DEPLOY_PR is true.
     if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]] || [[ "${DEPLOY_PR}" == "true" ]]; then
@@ -93,8 +99,10 @@
             printout "STEP" "Copy files from (GitHub) into <${deploy_dir}>"
             # Remove the various .gitignore files so we can use git to manage full set of the Deploy Candidate files.
             printout "INFO" "Refine Build Artifact (GitHub branch ${TRAVIS_BRANCH} built in ${TRAVIS_BUILD_DIR})."
-            rm -rf ${TRAVIS_BUILD_DIR}/hooks/.gitignore &> /dev/null
-            find ${TRAVIS_BUILD_DIR}/docroot/modules/custom/. -type f -name ".gitignore" -delete -print &> /dev/null
+
+            chmod -R 777 ${TRAVIS_BUILD_DIR}/docroot/sites/default/settings
+            mkdir ${deploy_dir}/docroot/sites/default/settings
+            chmod -R 777 ${deploy_dir}/docroot/sites/default/settings
 
             # Move files from the Deploy Candidate into the Acquia Repo.
             printout "INFO" "Select Build Artifact files and copy to create the Deploy Candidate."
@@ -120,6 +128,8 @@
                     fi
                 done
             fi
+            # Removes any gitignore files in contrib or custom modules.
+            find ${TRAVIS_BUILD_DIR}/docroot/modules/. -type f -name ".gitignore" -delete -print &> /dev/null
 
             # After moving, ensure the Acquia hooks are/remain executable (b/c they are bash scripts).
             chmod +x ${TRAVIS_BUILD_DIR}/hooks/**/*.sh

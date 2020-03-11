@@ -62,7 +62,6 @@ module:
   config: 0
   config_filter: 0
   config_ignore: 0
-  config_split: 0
   config_update: 0
   config_update_ui: 0
   content_access: 0
@@ -204,6 +203,7 @@ module:
   shortcode: 0
   shortcut: 0
   simplesamlphp_auth: 0
+  slackposter: 0
   smart_trim: 0
   svg_image: 0
   system: 0
