@@ -238,6 +238,34 @@
             exit 0
         fi
 
+    elif [[ "${build_local_database_source}" == "restore" ]]; then
+
+        # Grab a copy of the database from a local backup.
+        #
+        # The database backup to be restored is defined in <build.local.database.backup> in .config.yml
+        #
+        # Considerations:
+        #   1. Must be a fully functional drupal database
+        #   2. Path provided must be available inside the app container -restore command is running in the container.
+        printout "INFO" "RESTORE Mode: Will restore a DB dump and import repo configs."
+
+        # To be sure we eliminate all existing data we first drop the local DB, and then download a backup from the
+        # remote server, and restore into the database container.
+        ${drush_cmd} sql:drop --database=default -y > ${setup_logs}/drush_site_install.log &&
+            ${drush_cmd} sql:cli --database=default < ${build_local_database_backup}
+
+        # See how we faired.
+        if [[ $? -eq 0 ]]; then
+            printout "SUCCESS" "Site is installed with database restored from ${build_local_database_backup}.\n"
+        else
+            printout "ERROR" "Fail - Database restore" "Check ${setup_logs}/drush_site_install.log for issues."
+            exit 0
+        fi
+
+    else
+        # Do nothing.
+        printout "INFO" "config.sys file has build.local.database.source setting: ${build_local_database_source}."
+        printout "INFO" "The existing database has been left unchanged."
     fi
 
     # Import configurations from the project repo into the database.

@@ -28,9 +28,12 @@ build:
       sync: "../config/default"
     database:
       # Set source to 'initialize' to start a fresh install.
-      # Otherwise set it to 'sync' (and provide a drush-alias) to sync from the drush-alias environment.
-      # Tip: Develop environment has database in closest state to the github repo configs.
-      source: sync
+      # Set source to 'restore' and provide a full backup path in build.local.database.backup to restore a db dump.
+      # Otherwise set it to 'sync' (and provide a build.local.database.drush-alias) to sync from the drush-alias environment.
+      # Any other build.local.database.source value will leave existing DB unchanged.
+      # Tip: the remote develop environment has database in closest state to the github repo configs.
+      source: restore
+      backup: /app/dumps/SAML_DU.sql
       drush_alias: "@bostond8.dev"
       host: boston_database_1
       port: 3306
