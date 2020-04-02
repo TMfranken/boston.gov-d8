@@ -166,8 +166,8 @@ function build_settings() {
     if [[ -n "${private_settings_file}" ]]; then
         # If a private settings file is defined, then make a reference to it from the local.settings.php file.
         echo -e "\n// Adds a directive to include contents of settings file in repo.\n" >> ${local_settings_file}
-        echo -e "if (file_exists(DRUPAL_ROOT . \"/docroot/${git_private_repo_settings_file}\")) {\n" >> ${local_settings_file}
-        echo -e "  include DRUPAL_ROOT . \"/docroot/${git_private_repo_settings_file}\";\n" >> ${local_settings_file}
+        echo -e "if (file_exists(DRUPAL_ROOT . \"/${git_private_repo_settings_file}\")) {\n" >> ${local_settings_file}
+        echo -e "  include DRUPAL_ROOT . \"/${git_private_repo_settings_file}\";\n" >> ${local_settings_file}
         echo -e "}\n\n" >> ${local_settings_file}
     fi
     # Add in config sync directory from yml.
