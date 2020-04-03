@@ -4,3 +4,9 @@ services:
     arguments: ['@simplesamlphp_auth.manager', '@simplesamlphp_auth.drupalauth', '@config.factory', '@logger.channel.simplesamlphp_auth', '@module_handler']
     tags:
       - {name: event_subscriber}
+
+  bos_saml.event_subscriber:
+    class: Drupal\bos_saml\EventSubscriber\BosSamlSubscriber
+    arguments: ['@current_user', '@config.factory']
+    tags:
+      - {name: event_subscriber}
