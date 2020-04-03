@@ -1,35 +1,29 @@
 langcode: en
-default_langcode: en
 activate: true
-mail_attr: mail
-unique_id: eduPersonPrincipalName
-user_name: eduPersonPrincipalName
+mail_attr: EmailAddress
+unique_id: username
+user_name: username
 auth_source: default-sp
-login_link_display_name: 'Federated login'
+login_link_show: true
+login_link_display_name: 'Ping Login'
 header_no_cache: false
 role:
   population: null
   eval_every_time: false
 register_users: true
 allow:
-  set_drupal_pwd: false
+  set_drupal_pwd: true
   default_login: true
-  default_login_roles:
-    administrator: administrator
-    site_administrator: site_administrator
-    authenticated: '0'
-    developer: '0'
-    content_editor: '0'
-    content_author: '0'
+  default_login_roles: {  }
   default_login_users: '1'
-logout_goto_url: ''
-user_register_original: admin_only
+logout_goto_url: null
+user_register_original: null
 sync:
-  mail: true
+  mail: false
   user_name: true
-autoenablesaml: false
-debug: true
+autoenablesaml: true
+debug: false
 secure: false
 httponly: false
 _core:
-  default_config_hash: BuLah1nwoT5oUjn6XIuKnXkjcvdt5tDIGQ6gAflOY0s
+  default_config_hash: RMy8ch2MOT68bCD63OGZQRdMk2pD6UXPEZMuCIisbfs
