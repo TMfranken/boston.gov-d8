@@ -54,7 +54,10 @@ class BosSamlSubscriber implements EventSubscriberInterface {
   }
 
   /**
+   * This function replaces a hook_init() and is fired on checkForRedirection.
    *
+   * @param \Symfony\Component\HttpKernel\Event\GetResponseEvent $event
+   *   The event being raised.
    */
   public function checkForRedirection(GetResponseEvent $event) {
 
@@ -142,4 +145,5 @@ class BosSamlSubscriber implements EventSubscriberInterface {
     }
     return FALSE;
   }
+
 }

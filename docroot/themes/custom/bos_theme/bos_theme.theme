@@ -442,7 +442,7 @@ function bos_theme_preprocess_page(array &$variables, $hook) {
   // then the federated login button is not displayed.
   if (\Drupal::request()->getPathInfo() == "/user/login") {
     if (NULL === ($variables['sso_login_url'] = Drupal::state()
-        ->get('sso_login_url', NULL))) {
+      ->get('sso_login_url', NULL))) {
       // Get settings from saml.settings.php.
       $variables['sso_login_url'] = Settings::get('sso_login_url', '');
     }

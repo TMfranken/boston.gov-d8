@@ -1,4 +1,4 @@
-<?php /** @noinspection PhpComposerExtensionStubsInspection */
+<?php
 
 namespace Drupal\bos_saml\Controller;
 
@@ -31,7 +31,7 @@ class BosSamlController extends SimplesamlphpAuthController {
       if (empty($account)) {
         // Get info from LDAP.
         if (empty($attributes["EMailName"])) {
-          $ldap = $this->LdapLookup($attributes["username"][0]);
+          $ldap = $this->ldapLookup($attributes["username"][0]);
           if (!empty($ldap->data->person)) {
             $person = $ldap->data->person[0];
             $attributes["displayName"][0] = $person->displayname;
@@ -77,7 +77,7 @@ class BosSamlController extends SimplesamlphpAuthController {
    *
    * @throws \Exception
    */
-  private function LdapLookup(string $username) {
+  private function ldapLookup(string $username) {
     try {
       if (!($ch = curl_init())) {
         throw new \Exception("Bad Request - Cannot create CURL object");
