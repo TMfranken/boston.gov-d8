@@ -119,7 +119,7 @@ deploy:
     # Path to the drush command in the Travis container.
     travis_drush_path: '${REPO_ROOT}/vendor/bin/drush'
     # Alias for deploy target Aquia server.
-    drush_alias: "@bostond8.uat"
+    drush_alias: "@bostond8.dev2"
     # Definition of files that will and wont be copied from build to deploy.
     includes_file: ${REPO_ROOT}/scripts/deploy/deploy-includes.txt
     excludes_file: ${REPO_ROOT}/scripts/deploy/deploy-excludes.txt
