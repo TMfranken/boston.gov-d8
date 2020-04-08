@@ -43,8 +43,13 @@ class BosSamlController extends SimplesamlphpAuthController {
         $account = User::create([
           "name" => $attributes["username"][0],
           "mail" => $attributes["EMailName"][0],
+          "status" => 1,
         ])
           ->save();
+        $account = \Drupal::entityTypeManager()
+          ->getStorage("user")
+          ->loadByProperties(["name" => $attributes["username"]]);
+        $account = reset($account);
 
         // Make a nice display name.
         if (function_exists("bos_core_realname_update")) {
