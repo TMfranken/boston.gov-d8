@@ -7,7 +7,7 @@
     if [[ -n "${1}" ]]; then
         source_env="${1}"
     fi
-    if [[ -e "${drush_cmd}" ]]; then
+    if [[ -z "${drush_cmd}" ]]; then
         drush_cmd="/app/vendor/bin/drush  -r /app/docroot"
     fi
 
@@ -22,6 +22,11 @@
     SOURCE="@bostond8.${source_env}"
     ${drush_cmd} -y sql:drop --database=default &&
         ${drush_cmd} -y sql:sync --skip-tables-key=common --structure-tables-key=common ${SOURCE} @self
+
+    # make sure the latest composer packages are downloaded according to composer.lock
+    if [[ -e "/app/composer.lock" ]]; then
+        composer update
+    fi
 
     # Update database with local settings
     sync_db "${ALIAS}"
