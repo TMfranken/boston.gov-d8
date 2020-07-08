@@ -657,7 +657,7 @@ devModules() {
         ${drush_cmd} pmu simplesamlphp_auth captcha recaptcha_v3 ${DRUSH_OPT} > /dev/null
         printf " [notice] simplesamlphp_auth module is disabled for local builds.\n"
         printf "          If you need to configure this module you will first need to enable it and then \n"
-        printf "          run 'lando drupal cis /app/config/default/simplesamlphp_auth.settings.yml' to import its configurations.\n"
+        printf "          run 'lando drupal cis --file /app/config/default/simplesamlphp_auth.settings.yml' to import its configurations.\n"
     fi
 
     # Set the environment toolbar colors.
