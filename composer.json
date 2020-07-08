@@ -50,11 +50,12 @@
     "drupal/config_update": "1.x-dev#ac36a9f8d8a2cc730edf8cc654382715ba849adc",
     "drupal/console": "^1.0.2",
     "drupal/content_access": "^1.0",
+    "drupal/contextual_range_filter": "^1.0",
     "drupal/core": "~8.8",
     "drupal/ctools": "^3.0",
     "drupal/date_popup": "^1.0",
     "drupal/date_recur": "^2.0",
-    "drupal/date_recur_modular": "^1.0-alpha1",
+    "drupal/date_recur_modular": "^2.0",
     "drupal/diff": "^1.0",
     "drupal/draggableviews": "^1.0",
     "drupal/dynamic_entity_reference": "^2.0",
@@ -70,6 +71,7 @@
     "drupal/field_display_label": "^1.0",
     "drupal/field_group": "^3.0",
     "drupal/file_entity": "^2.0",
+    "drupal/geolocation": "^3.0",
     "drupal/google_tag": "^1.0",
     "drupal/honeypot": "^1.27",
     "drupal/image_url_formatter": "^1.0",
@@ -90,7 +92,7 @@
     "drupal/office_hours": "^1.1",
     "drupal/paragraphs": "^1.3",
     "drupal/paragraphs_browser": "1.x-dev",
-    "drupal/paragraphs_edit": "^2.0@alpha",
+    "drupal/paragraphs_edit": "^2.0",
     "drupal/paranoia": "^1.0",
     "drupal/pathauto": "^1.2",
     "drupal/phpexcel": "^3.0",
@@ -100,15 +102,18 @@
     "drupal/purge": "^3.0",
     "drupal/rabbit_hole": "^1.0-beta5",
     "drupal/realname": "^1.0",
+    "drupal/recaptcha_v3": "^1.3",
     "drupal/redirect": "^1.2",
+    "drupal/rest_export_nested": "^1.0",
     "drupal/restui": "^1.16",
     "drupal/rules": "^3.0",
-    "drupal/salesforce": "3.x-dev",
+    "drupal/salesforce": "^4.0",
     "drupal/schema_metatag": "^1.4",
     "drupal/seckit": "^1.0",
     "drupal/shortcode": "^1.0",
     "drupal/simplesamlphp_auth": "^3.1",
     "drupal/smart_trim": "^1.1",
+    "drupal/social_media": "^1.8",
     "drupal/svg_image": "^1.8",
     "drupal/token": "^1.3",
     "drupal/token_custom": "^1.0",
@@ -116,8 +121,10 @@
     "drupal/twig_tweak": "^2.1",
     "drupal/typed_data": "^1.0-alpha2",
     "drupal/viewfield": "^3.0",
+    "drupal/views_accordion": "^1.3",
     "drupal/views_bulk_operations": "^2.3",
     "drupal/votingapi": "^3.0",
+    "drupal/webform": "^5.9",
     "drupal/workbench": "^1.0",
     "drupal/workflow": "^1.1_",
     "drupal/xmlsitemap": "^1.0",
@@ -138,7 +145,7 @@
     "behat/mink-selenium2-driver": "^1.3",
     "drupal/config_devel": "^1.2",
     "drupal/config_installer": "^1.8",
-    "drupal/devel": "3.*",
+    "drupal/devel": "^4.0",
     "drupal/drupal-extension": "^3.4",
     "drupal/migrate_plus": "^4.0",
     "drupal/migrate_source_csv": "^2.2",
@@ -183,20 +190,12 @@
       "drupal/core": {
         "* CoB patch - Fix orginal node is null on migration.": "patches/cob_migration_missing_original_001.patch",
         "Optional end-date in date_range field type": "https://www.drupal.org/files/issues/2018-05-14/2794481-60.patch",
-        "* Title is a render array - Fixes media library ajax popup.": "https://www.drupal.org/files/issues/2018-07-06/2663316-52.patch",
-        "* https://www.drupal.org/project/drupal/issues/2174633": "https://www.drupal.org/files/issues/2019-10-14/2174633-351.patch",
-        "* https://www.drupal.org/project/drupal/issues/2863188": "https://www.drupal.org/files/issues/2019-10-04/2863188-8.7.8.do-not-test_0.patch",
-        "FIX: Simple decimals fail to pass validation (issues/2019-05-04) - DU 03-11-2020": "https://www.drupal.org/files/issues/2019-05-04/drupal_2230909_138.patch"
+        "* Title is a render array - Fixes media library ajax popup.": "https://www.drupal.org/files/issues/2019-10-21/2663316-76.drupal.Broken-title-in-modal-dialog-when-title-is-a-render-array.patch",
+        "FIX: Simple decimals fail to pass validation (https://www.drupal.org/project/drupal/issues/2230909) - DU 03-11-2020": "https://www.drupal.org/files/issues/2020-05-26/2230909-162.patch",
+        "FIX: Remaining entity references can crash json module after entity is uninstalled - DU 06-01-2020": "https://www.drupal.org/files/issues/2020-06-06/2996114-141.patch"
       },
       "drupal/migrate_drupal": {
         "Fix 'Call to a member function getSetting() on null' in migrate_drupal.": "https://www.drupal.org/files/issues/2018-07-08/2984460-3.patch"
-      },
-      "drupal/migrate_tools": {
-        "* Fix '--tag/group/limit does not accept a value' in migrate commands.": "https://www.drupal.org/files/issues/2019-01-29/migration-tools_fix-drush-options_3024399-9.patch"
-      },
-      "drupal/field_group": {
-        "* CoB patch - Patch D6 field_group_migrations with file annotations.": "patches/d6_field_group.php.patch",
-        "* CoB patch - Patch D7 field_group_migrations with file annotations.": "patches/d7_field_group.php.patch"
       },
       "drupal/password_policy": {
         "Patch for install of Password Policy module.": "https://www.drupal.org/files/issues/2019-05-20/password_policy-config_import_field_error-2771129-81.patch",
@@ -212,19 +211,12 @@
         "CoB patch - Add helper for exdate retreival": "patches/exdate_helper.patch",
         "CoB patch - Make filter work without exposed input": "patches/makeFilterWorkWithoutExposedInput.patch"
       },
-      "drupal/entity_reference_revisions":{
-        "* Fixes hasTranslation() on null": "https://www.drupal.org/files/issues/2018-11-26/hastranslation-on-null-3016233-2.patch"
-      },
       "drupal/imagemagick": {
         "* CoB patch to implements move/copy logic": "patches/ImagemagickToolkit_identify_migrate_patch_01.patch",
-        "* CoB patch - Handles data is not set error": "patches/imagemagikToolkit_001.patch",
         "CoB patch to reduce errors from svg processing while Acquia does not have svg libraries.": "patches/imageMagick_svg_parse.patch"
       },
       "drupal/paragraphs_edit": {
         "Lineage issue when parent not a paragraph": "https://www.drupal.org/files/issues/2019-03-22/error_on_missing_parent-2944653-13034993.patch"
-      },
-      "drupal/salesforce": {
-        "* https://www.drupal.org/project/salesforce/issues/3045542": "https://www.drupal.org/files/issues/2019-06-05/salesforce-endpoint_verification_option-3045542-8.patch"
       },
       "drupal/simplesamlphp_auth": {
         "https://www.drupal.org/project/simplesamlphp_auth/issues/2837029": "https://www.drupal.org/files/issues/2837029-2.patch"

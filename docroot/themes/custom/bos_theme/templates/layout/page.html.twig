@@ -93,6 +93,11 @@
 
 <input type="checkbox" id="brg-tr" class="brg-tr" aria-hidden="true" />
 
+<!-- ADA Skip Nav -->
+<div class="sw-skipnav-outerbar">
+  <a href="#content" id="skipLink" class="sw-skipnav" data-swiftype-index="false" tabindex="0" >Skip to Main Content</a>
+</div>
+
 <nav class="nv-m">
   <div class="nv-m-h">
     <div class="nv-m-h-ic">
@@ -119,14 +124,18 @@
   </header>
 
   {{ drupal_block('views_block:emergency_alerts-block_emergency_alert') }}
-  {{ drupal_block('views_block:site_alerts-block_site_alerts') }}
+
+  {% if not cob["sa-excluded"] %}
+    {{ drupal_block('views_block:site_alerts-block_site_alerts') }}
+  {% endif %}
 
   <div class="main">
     <div class="container">
 
       <section class="main-content" id="content" role="main">
+
         {{ page.highlighted }}
-        <a href="#skip-link" class="visually-hidden--focusable" id="main-content" data-swiftype-index="false" tabindex="-1">Back to top</a>
+        <a href="#skip-link" class="visually-hidden--focusable" id="main-content" data-swiftype-index="false" tabindex="0">Back to top</a>
 
        {{ title_prefix }}
         {%  if title and not hide_page_title %}

@@ -23,11 +23,11 @@ What:  Locates top of page considering the admin toolbar.
 .toolbar-fixed .nv-m {
   top: 2.15em;
 }
-.logged-in.page-error.toolbar-fixed.toolbar-tray-open #main-menu,
 .toolbar-fixed.toolbar-horizontal.toolbar-tray-open #main-menu,
 .toolbar-fixed.toolbar-tray-open .nv-m {
   top: 4.4em;
 }
+.logged-in.page-error.toolbar-fixed.toolbar-tray-open #main-menu {top: 0;}
 .toolbar-toggle-orientation {
   visibility: hidden;
   display: none;
@@ -862,7 +862,7 @@ What: Moves the logo display trigger width from 1054px to 1110px Iterators issue
 }
 
 /*
-David:
+Stella:
 Where: menu--menu-footer-menu.twig.twig
 What: Improves footer responsive actions. Iterators issue #32.
 */
@@ -871,18 +871,44 @@ What: Improves footer responsive actions. Iterators issue #32.
     display: flex;
     flex-flow: column;
   }
-  .ft .ft-ll {
+  .ft .ft-ll:not(.ft-ite-311) {
     margin-top: -30px;
     line-height: 1.5em;
   }
-  .ft .ft-ll--r {
-    margin-top: 0px;
+  .ft-ite-311 .ft-ll-i {
+    text-align: right;
   }
-  .ft-ll-i {}
-  .ft-ll-i:first-child {
-    margin-left: 18px;
+  .ft-ite-311 .ft-ll-311 {
+    text-align: left;
   }
 }
+
+.ft-ll-a {
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  color: #288be4;
+}
+.ft-ite-311 .ft-ll-i {
+  padding-right: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .ft-c {
+    position: relative;
+  }
+  #block-footermenu {
+    order: 2;
+    margin-top: 26px;
+    padding-bottom: 15px;
+  }
+  .ft-ll.ft-ite-311 {
+    order: 1;
+    display: block;
+    position: absolute;
+  }
+}
+
 /*
 David:
 Where: node-listing-page.twig.twig
@@ -977,25 +1003,20 @@ David:
 Where: page.html.twig
 What: Styles the watermark for D8.
  */
-.node-moderated.toolbar-fixed .nv-m,
-.node-moderated.toolbar-fixed #main-menu {
-  top: 6.5em;
+
+.logged-in.toolbar-fixed #main-menu {
+  top: 4.3em;
 }
-.node-moderated #page,
-.node-moderated.toolbar-fixed.toolbar-tray-open .nv-m,
-.node-moderated.toolbar-fixed.toolbar-tray-open #main-menu {
-  top: 8.8em;
-}
+.logged-in.toolbar-fixed .nv-m {top: 6.5em;}
+.logged-in.toolbar-fixed.toolbar-tray-open .nv-m {top: 8em;}
 .logged-in.page-error #page,
-.logged-in.page-error .toolbar-fixed.toolbar-tray-open .nv-m,
 .logged-in.page-error .toolbar-fixed.toolbar-tray-open #main-menu {
   top: 4.4em;
 }
-.logged-in #page .main {
-  margin-top: 0;
-}
+.logged-in.page-error .toolbar-fixed.toolbar-tray-open .nv-m { top: 4.4em;}
 .logged-in #page {
   padding-top: 0;
+  top: 0;
 }
 .logged-in #page .hro {
   margin-top: -15px;
@@ -1258,13 +1279,72 @@ What: Adding style to view-row that is suddenly wrapping divs with .n-li class
 
 /**
 Stella
-Where: Top Navigation
-What: Hiding Translate button across site and devices
+Where: Top Navigation.
+What: Adding boston.gov only aatribute override.
 */
 
-.tr-dd-link--hidden.translate-dropdown-menu {
-  display:none;
+.translate-dropdown-menu {
+  display:block;
 }
 .tr--visible.translate-dropdown-menu {
-  display: none;
+  display: block !important;
+}
+
+.brg-tr, .h {position: relative; }
+.mn {padding: 0;}
+.adminimal-admin-toolbar .brg-tr:checked~.mn .h, .brg-tr:checked~.mn .h, .nv-s {left: 0;}
+@media (min-width: 1280px) {
+  .adminimal-admin-toolbar .node-emergency-alert .b-c--nbp {
+    padding-top: 3rem;
+  }
+}
+
+/**
+Stella
+Where: Menu Navigation.
+What: Updating CSS for accessibility and
+ */
+
+div.sw-skipnav-outerbar {
+  display: block;
+  height: 40px;
+  width: 100%;
+  background-color: #091f2f;
+  text-align: left;
+  margin-top: -40px;
+  padding-left: 15px;
+}
+
+a.sw-skipnav {
+  display: inline-block;
+  margin: auto;
+  margin-top: 0px;
+  color: #fff;
+  text-decoration: none;
+}
+
+#page #main-menu.sticky {position: fixed;}
+.brg-tr:checked ~ .mn #main-menu.sticky.h {left: 300px;}
+
+.logged-in.toolbar-fixed #page #main-menu.sticky {top: 6.5em;}
+.toolbar-fixed.toolbar-horizontal.toolbar-tray-open #page #main-menu.sticky {top: 8.8em;}
+.logged-in.toolbar-fixed #main-menu.sticky {top:4.3em;}
+
+@media screen and (max-width: 480px) {
+  .brg-tr:checked ~ .mn #main-menu.sticky.h {
+    left: 256px;
+    outline: none;
+  }
+}
+
+/**
+Stella
+Where: Listing page filter
+What: Each filter width adjustment
+ */
+
+@media (min-width: 980px) {
+  .view-metrolist-affordable-housing-page .view-filters .drawer-wrapper {
+    width: calc(33.3% - 76px);
+  }
 }

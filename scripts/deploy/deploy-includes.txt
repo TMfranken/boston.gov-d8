@@ -3,6 +3,8 @@ docroot
 drush
 hooks
 vendor
+simplesamlphp
 scripts/deploy/acquia.enc
-composer.json
+scripts/deploy/cob_utilities.sh
 composer.lock
+composer.json
