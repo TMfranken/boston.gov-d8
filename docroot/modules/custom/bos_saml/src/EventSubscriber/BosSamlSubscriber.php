@@ -116,7 +116,8 @@ class BosSamlSubscriber implements EventSubscriberInterface {
 
           if ($allowed) {
             // Redirect to sso.boston.dev.
-//            $url = Url::fromRoute('simplesamlphp_auth.saml_login', [], ['query' => \Drupal::destination()->getAsArray()]);
+            // $url = Url::fromRoute('simplesamlphp_auth.saml_login', [],
+            // ['query' => \Drupal::destination()->getAsArray()]);
             $url = Url::fromRoute('bos_saml.saml_login');
             $response = new RedirectResponse($url->toString(), RedirectResponse::HTTP_FOUND);
             $event->setResponse($response);
