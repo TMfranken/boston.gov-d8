@@ -35,8 +35,10 @@
 
     # Check for options/flags passed in.
     if [[ "${1}" != "--no-sync" ]]; then
+        printout "INFO" "Will install packages as defined in composer.lock."
+        cd /app && composer install
         printout "INFO" "Preparing Config Import"
-        printf "       - Don't worry that modules are uninstalled here - they will be re-enabled later."
+        printf "       - Don't worry that modules are uninstalled here - they will be re-enabled later.\n\n"
         ${drush_cmd} cim -y
         ${drush_cmd} updb -y
         printout "INFO" "Resetting modules for development."
