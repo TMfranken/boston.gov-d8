@@ -49,6 +49,7 @@ module:
   bos_newsletter: 0
   bos_photo: 0
   bos_quote: 0
+  bos_saml: 0
   bos_seamless_doc: 0
   bos_shortcodes: 0
   bos_sidebar: 0
