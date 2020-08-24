@@ -17,7 +17,7 @@ var replace = require('gulp-replace');
 // File paths
 const files = {
     cssPath: 'css/mnl_styles.css', 
-    scssPath: 'components/**/*.scss',
+    scssPath: 'js/components/**/*.scss',
     react: 'node_modules/react/umd/react.production.min.js',
     reactDom: 'node_modules/react-dom/umd/react-dom.production.min.js',
     jsReactConfig: 'js/app/mnl_config.js',
