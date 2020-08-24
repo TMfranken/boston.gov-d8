@@ -6,7 +6,7 @@ branches:
   only:
     - develop
     - master
-    - metrolist_ci
+    - web_app_integration_2
 
 php:
   - 7.3
@@ -121,4 +121,4 @@ deploy:
     skip_cleanup: true
     script: bash $TRAVIS_BUILD_DIR/scripts/deploy/travis_deploy.sh $TRAVIS_BRANCH
     on:
-      branch: metrolist_ci
+      branch: web_app_integration_2
