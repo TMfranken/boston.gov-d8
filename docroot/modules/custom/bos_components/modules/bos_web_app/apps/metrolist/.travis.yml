@@ -1,0 +1,33 @@
+language: node_js
+
+os:
+  # - windows
+  - linux
+  # - osx
+
+node_js:
+  # - node
+  - lts/*
+
+# addons:
+#   chrome: stable
+
+branches:
+  only:
+    - new-unit-tests
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+before_script:
+  - yarn run sync:icons
+  - yarn run sync:ami ci
+
+after_success:
+  - yarn run codecov
+
+email:
+  on_failure: change
+  on_success: never
