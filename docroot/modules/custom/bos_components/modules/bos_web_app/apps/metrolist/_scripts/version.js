@@ -6,8 +6,8 @@ const path = require( 'path' );
 
 const parameters = process.argv.slice( 2 );
 const drupalDirectory = 'boston.gov-d8';
-const indexFilePath = path.resolve( __dirname, `../../${drupalDirectory}/docroot/modules/custom/bos_components/modules/bos_web_app/apps/metrolist/index.bundle.js` );
-const librariesFilePath = path.resolve( __dirname, `../../${drupalDirectory}/docroot/modules/custom/bos_components/modules/bos_web_app/bos_web_app.libraries.yml` );
+const indexFilePath = path.resolve( __dirname, `../dist/index.bundle.js` );
+const librariesFilePath = path.resolve( __dirname, `../../../bos_web_app.libraries.yml` );
 const packageFilePath = path.resolve( __dirname, '../package.json' );
 const indexFile = fs.readFileSync( indexFilePath );
 const librariesFile = fs.readFileSync( librariesFilePath, 'utf8' );
