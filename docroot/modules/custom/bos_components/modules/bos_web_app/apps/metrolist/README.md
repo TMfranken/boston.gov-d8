@@ -6,7 +6,7 @@ The Metrolist app is built using REACT to poplulate the front-end and Webpack as
 ## Getting Started
 The Drupal Web Apps are currently dependent on Node.js and either Gulp or Webpack to bundle and transpile the code base. Instructions are below.
 
-1. Node and NPM (node package manager)
+#### Node and NPM (node package manager)
 
 https://nodejs.org/en/
 
@@ -16,7 +16,7 @@ Cofirm that you have the latest version.
 npm install npm@latest -g
 ```
 
-2. Gulp and Gulp CLI (command line interface)
+#### Gulp and Gulp CLI (command line interface)
 
 ```shell
 npm install gulp-cli -g
@@ -24,7 +24,7 @@ npm install gulp
 ```
 
 
-2. Webpack
+#### Webpack
 
 ```shell
 npm install --save-dev webpack
