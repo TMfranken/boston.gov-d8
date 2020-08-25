@@ -16,13 +16,13 @@ var replace = require('gulp-replace');
 
 // File paths
 const files = {
-    cssPath: 'css/mnl_styles.css', 
-    scssPath: 'js/components/**/*.scss',
+    cssPath: 'src/css/mnl_styles.css', 
+    scssPath: 'src/components/**/*.scss',
     react: 'node_modules/react/umd/react.production.min.js',
     reactDom: 'node_modules/react-dom/umd/react-dom.production.min.js',
-    jsReactConfig: 'js/app/mnl_config.js',
-    jsReactComponents: 'js/components/*.js',
-    jsReactApp: 'js/app/mnl_react.js',
+    jsReactConfig: 'src/js/app/mnl_config.js',
+    jsReactComponents: 'src/js/components/*.js',
+    jsReactApp: 'src/js/app/mnl_react.js',
 }
 
 // Sass task: compiles the style.scss file into style.css

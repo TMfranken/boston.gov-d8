@@ -8,7 +8,7 @@ The Drupal Web Apps are currently dependent on Node.js and either Gulp or Webpac
 
 #### Node and NPM (node package manager)
 
-https://nodejs.org/en/
+[https://nodejs.org] (https://nodejs.org/en)
 
 Cofirm that you have the latest version.
 
@@ -29,6 +29,41 @@ npm install gulp
 ```shell
 npm install --save-dev webpack
 ```
+
+## Editing / updating source code
+The Web Apps file structure has 2 main directories, 'src' and 'dist'. The source files you edit will be in 'src' and the files to be bundled and referenced from the [Web Apps Library](../../bos_web_app.libraries.yml) will be in the `dist` folder. 
+
+__*The 'dist' folder's contents should never be edited directly.*__
+
+1. Browse to the project docroot using the command line
+
+```shell
+cd <your_local_directory_path>/boston.gov-d8/docroot/modules/custom/bos_components/modules/bos_web_app/<web_app_name>
+``` 
+
+2. Install node packes using npm
+
+  
+```shell
+npm install
+``` 
+
+__*Make sure a `package.json` file exists or else npm can't install needed packages / dependencies.*__
+
+3. Start webpack
+A default command will start webpack and 'watch' any changed files.
+
+```shell
+npm run webpack:default
+``` 
+
+Alterntively, if you don't want to 'watch' changed files you can just run the 'prod' option after edting neccesary files in step 4.
+
+```shell
+npm run webpack:default:prod
+``` 
+
+4. Edit relevant files found in 'src' directory
 
 
 

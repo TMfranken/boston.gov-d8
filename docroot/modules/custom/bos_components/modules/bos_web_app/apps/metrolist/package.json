@@ -107,8 +107,8 @@
     "build-storybook": "build-storybook -s public",
     "codecov": "./node_modules/.bin/codecov",
     "version:drupal": "node _scripts/version.js -n 4",
-    "default": "webpack --watch --config webpack.config.js",
-    "default:prod": "webpack --config webpack.production.js"
+    "webpack:default": "webpack --watch --config webpack.config.js",
+    "webpack:default:prod": "webpack --config webpack.production.js"
   },
   "eslintConfig": {
     "extends": "react-app"
