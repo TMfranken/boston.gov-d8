@@ -1070,6 +1070,14 @@ function _node_buildinghousing_build_render_developer_info(EntityInterface $enti
     $vars['title'] = $vars['title'] == 'NHD TBD - Developer to be Selected' ? t('To Be Decided') : $vars['title'];
     $vars['link'] = $webUpdate->get('field_bh_developer_website')->value ?? NULL;
 
+    $urlScheme = parse_url($vars['link'], PHP_URL_SCHEME)
+      ? parse_url($vars['link'], PHP_URL_SCHEME) . '://'
+      : 'http://';
+    $urlHost= parse_url($vars['link'], PHP_URL_HOST) ?? '';
+    $urlPath = parse_url($vars['link'], PHP_URL_PATH) ?? '';
+
+    $vars['link'] = $urlScheme . $urlHost . $urlPath;
+
     $vars['tags'] = NULL;
 
     if ($webUpdate->get('field_bh_minority_owned_business')->value) {
